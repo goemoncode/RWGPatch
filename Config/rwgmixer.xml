@@ -1,4 +1,6 @@
 <patch>
+  <setattribute xpath="/rwgmixer/township/property[@name='biomes']" name="value">forest,desert,burntforest,snow,wasteland</setattribute>
+
   <remove xpath="/rwgmixer/prefab_spawn_adjust[starts-with(@partial_name, 'trader_')]" />
   <append xpath="/rwgmixer">
     <prefab_spawn_adjust partial_name="trader_rekt" bias="5" min_count="1" max_count="2"/>
