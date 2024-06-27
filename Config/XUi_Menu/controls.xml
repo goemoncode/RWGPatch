@@ -1,0 +1,3 @@
+<patch>
+  <setattribute xpath="/controls/rwg_biome//combobox" name="type">ComboBoxIntEx, RWGPatch</setattribute>
+</patch>

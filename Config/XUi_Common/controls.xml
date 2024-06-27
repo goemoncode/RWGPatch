@@ -1,0 +1,4 @@
+<patch>
+  <setattribute xpath="/controls/combobox" name="default_value">Default</setattribute>
+  <setattribute xpath="/controls/combobox/rect" name="default_value">${default_value}</setattribute>
+</patch>

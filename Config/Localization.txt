@@ -1,0 +1,8 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese
+xuiTraders,UI,XUI Random Gen Previewer,,,Traders,,Händler,Vendedor,Marchand,Negoziante,トレーダー,상인,Handlarzy,Comerciante,продаем,Tüccar,商人,商人
+xuiSpawnRange,UI,XUI Random Gen Previewer,,,Spawn Range,,,,,,開始範囲,,,,,,,
+xuiSpawnBiome,UI,XUI Random Gen Previewer,,,Spawn Biome,,,,,,開始エリア,,,,,,,
+xuiWorldGenerationShort,UI,XUI Random Gen Previewer,x,,Short,,,,,,近い,,,,,,,
+xuiWorldGenerationLong,UI,XUI Random Gen Previewer,x,,Long,,,,,,遠い,,,,,,,
+xuiWorldGenerationRandomize,UI,XUI Random Gen Previewer,x,,Randomize,,,,,,ランダム,,,,,,,
+xuiRWGLine,UI,XUI Random Gen Previewer,,,Single,,,,,,単一,,,,,,,

@@ -1,0 +1,11 @@
+<patch>
+  <remove xpath="/rwgmixer/prefab_spawn_adjust[starts-with(@partial_name, 'trader_')]" />
+  <append xpath="/rwgmixer">
+    <prefab_spawn_adjust partial_name="trader_rekt" bias="5" min_count="1" max_count="2"/>
+    <prefab_spawn_adjust partial_name="trader_jen" bias="5" min_count="1" max_count="2"/>
+    <prefab_spawn_adjust partial_name="trader_bob" bias="5" min_count="1" max_count="2"/>
+    <prefab_spawn_adjust partial_name="trader_hugh" bias="5" min_count="1" max_count="2"/>
+    <prefab_spawn_adjust partial_name="trader_joel" bias="5" min_count="1" max_count="2"/>
+    <player_spawn min_count="5" max_count="30" range="600,900,1200" />
+  </append>
+</patch>
