@@ -34,7 +34,7 @@ This mod adds following options.
 - Spawn Range  
   How many meters away from first trader (or city) should spawn points be placed?
 
-  - Short
+  - Short  
     Spawn points are placed within 600 meters from a trader if a trader is spawned in the world, otherwise within 600 meters from a city or town. (Simillar to A21)
   - Default  
     Spawn points are placed within 900 meters from a trader if a trader is spawned in the world, otherwise within 900 meters from a city or town. (Almost the same as vanilla.)
