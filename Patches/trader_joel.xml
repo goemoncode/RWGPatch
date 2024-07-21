@@ -1,0 +1,4 @@
+<patch>
+  <setattribute xpath="/prefab/property[@name='ThemeTags']" name="value">trader, traderJoel</setattribute>
+  <setattribute xpath="/prefab/property[@name='ThemeRepeatDistance']" name="value">1500</setattribute>
+</patch>
