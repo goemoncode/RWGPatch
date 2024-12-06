@@ -28,7 +28,7 @@
 
   <remove xpath="/windows/window[@name='worldGeneration']//label[@text='warning']" />
 
-  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='WorldSize']" name="type">ComboBoxListEx, RWGPatch</setattribute>
+  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='WorldSize']" name="type">ComboBoxIntList, RWGPatch</setattribute>
   <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='WorldSize']" name="default_value">8192</setattribute>
   <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[contains(@type, 'GenerationSelections')]" name="type">ComboBoxEnumEx`1[WorldGenerationEngineFinal.WorldBuilder+GenerationSelections], RWGPatch</setattribute>
   <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='PreviewQuality']" name="type">ComboBoxEnumEx`1[XUiC_WorldGenerationWindowGroup+PreviewQuality], RWGPatch</setattribute>
