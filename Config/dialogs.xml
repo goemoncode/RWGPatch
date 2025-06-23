@@ -1,0 +1,3 @@
+<patch>
+  <remove xpath="//requirement[@id='IntroComplete']" />
+</patch>

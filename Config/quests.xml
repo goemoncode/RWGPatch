@@ -1,4 +1,7 @@
 <patch>
+  <remove xpath="//quest[@id='intro_buried_supplies']//property[@name='biome_filter_type']"/>
+  <remove xpath="//quest[@id='intro_buried_supplies']//property[@name='biome_filter']"/>
+
   <remove xpath="/quests/quest[@id='tier2_nexttrader']" />
   <remove xpath="/quests/quest[@id='tier3_nexttrader']" />
   <remove xpath="/quests/quest[@id='tier4_nexttrader']" />
