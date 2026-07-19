@@ -1,64 +1,197 @@
 <patch>
-  <setattribute xpath="/windows/window[@name='newContinueGame']//rect[@controller='WorldGenerationWindowGroup']//combobox[@name='WorldSize']" name="values">2048,3072,4096,5120,6144,7168,8192,9216,10240</setattribute>
-
-  <insertAfter xpath="/windows/window[@name='newContinueGame']//rect[@controller='WorldGenerationWindowGroup']//simplebutton[@name='btnGenerateWorld']">
-    <rect pos="289,0" depth="-100">
-      <combobox name="Towns" type="ComboBoxEnum`1[WorldGenerationEngineFinal.WorldBuilder+GenerationSelections]" />
-      <combobox name="Wilderness" type="ComboBoxEnum`1[WorldGenerationEngineFinal.WorldBuilder+GenerationSelections]" />
-      <combobox name="Rivers" type="ComboBoxEnum`1[WorldGenerationEngineFinal.WorldBuilder+GenerationSelections]" />
-      <combobox name="Craters" type="ComboBoxEnum`1[WorldGenerationEngineFinal.WorldBuilder+GenerationSelections]" />
-      <combobox name="Cracks" type="ComboBoxEnum`1[WorldGenerationEngineFinal.WorldBuilder+GenerationSelections]" />
-      <combobox name="Lakes" type="ComboBoxEnum`1[WorldGenerationEngineFinal.WorldBuilder+GenerationSelections]" />
-      <combobox name="Traders" type="ComboBoxEnum`1[[SpawnTraders, RWGPatch]]" />
-      <combobox name="SpawnRange" type="ComboBoxEnum`1[[PlayerSpawnRange, RWGPatch]]" />
-      <combobox name="SpawnBiome" type="ComboBoxEnum`1[[PlayerSpawnBiome, RWGPatch]]" />
-      <combobox name="PlainsWeight" type="ComboBoxInt" />
-      <combobox name="HillsWeight" type="ComboBoxInt" />
-      <combobox name="MountainsWeight" type="ComboBoxInt" />
-      <combobox name="BiomeLayout" type="ComboBoxEnum`1[WorldGenerationEngineFinal.WorldBuilder+BiomeLayout]" />
-      <rect name="biomes">
-        <rect><combobox name="cb" type="ComboBoxInt" /></rect>
-        <rect><combobox name="cb" type="ComboBoxInt" /></rect>
-        <rect><combobox name="cb" type="ComboBoxInt" /></rect>
-        <rect><combobox name="cb" type="ComboBoxInt" /></rect>
-        <rect><combobox name="cb" type="ComboBoxInt" /></rect>
-      </rect>
+  <removeattribute xpath="//window[@name='newGame']//*[@controller='WorldGenerationWindow']//label[@text_key='xuiRwgWorldSeed']/@tooltip_key" />
+  <setattribute xpath="//window[@name='newGame']//*[@controller='WorldGenerationWindow']//label[@text_key='xuiRwgWorldSeed']" name="active_text_color">{% countynamevalid ? color(255,255,255,255) : color(255,0,0,255) }</setattribute>
+  <setattribute xpath="//window[@name='newGame']//*[@controller='WorldGenerationWindow']//label[@text_key='xuiRwgWorldSeed']" name="text_key">xuiWorldName</setattribute>
+  <removeattribute xpath="//window[@name='newGame']//*[@controller='WorldGenerationWindow']//label[@text_key='xuiRwgCountyName']/@tooltip_key" />
+  <setattribute xpath="//window[@name='newGame']//*[@controller='WorldGenerationWindow']//label[@text_key='xuiRwgCountyName']" name="text_key">xuiRwgWorldSeed</setattribute>
+  <setattribute xpath="//window[@name='newGame']//*[@controller='WorldGenerationWindow']//combobox[@name='WorldSize']" name="type">ComboBoxIntList, RWGPatch</setattribute>
+  <setattribute xpath="//window[@name='newGame']//*[@controller='WorldGenerationWindow']//combobox[@name='WorldSize']" name="values">4096,5120,6144,7168,8192,9216,10240</setattribute>
+  <insertAfter xpath="//window[@name='newGame']//*[@controller='WorldGenerationWindow']//labeledbutton[@name='btnGenerateWorld']">
+    <rect pos="294,-5" controller="XUiC_RWG_Options, RWGPatch">
+      <combobox name="BiomeLayout" type="RWG_BiomeLayout, RWGPatch" default_value="CenterForest" style="hidden" />
+      <combobox name="PineForestWeight" type="ComboBoxIntEx, RWGPatch" default_value="13" style="hidden" />
+      <combobox name="BurntForestWeight" type="ComboBoxIntEx, RWGPatch" default_value="18" style="hidden" />
+      <combobox name="DesertWeight" type="ComboBoxIntEx, RWGPatch" default_value="22" style="hidden" />
+      <combobox name="SnowWeight" type="ComboBoxIntEx, RWGPatch" default_value="23" style="hidden" />
+      <combobox name="WastelandWeight" type="ComboBoxIntEx, RWGPatch" default_value="24" style="hidden" />
+      <combobox name="SpawnBiome" type="RWG_PlayerSpawnBiome, RWGPatch" default_value="Default" style="hidden" />
+      <combobox name="SpawnRange" type="RWG_PlayerSpawnRange, RWGPatch" default_value="Default" style="hidden" />
+      <combobox name="Towns" type="RWG_GenerationSelections, RWGPatch" default_value="Default" style="hidden" />
+      <combobox name="Wilderness" type="RWG_GenerationSelections, RWGPatch" default_value="Default" style="hidden" />
+      <combobox name="Traders" type="RWG_SpawnTraders, RWGPatch" default_value="Default" style="hidden" />
+      <combobox name="Rivers" type="RWG_GenerationSelections, RWGPatch" default_value="Default" style="hidden" />
+      <combobox name="Craters" type="RWG_GenerationSelections, RWGPatch" default_value="Default" style="hidden" />
+      <combobox name="Cracks" type="RWG_GenerationSelections, RWGPatch" default_value="Default" style="hidden" />
+      <combobox name="Lakes" type="RWG_GenerationSelections, RWGPatch" default_value="Default" style="hidden" />
+      <combobox name="Hills" type="RWG_GenerationSelections, RWGPatch" default_value="Default" style="hidden" />
+      <combobox name="Mountains" type="RWG_GenerationSelections, RWGPatch" default_value="Default" style="hidden" />
+      <combobox name="PlainsWeight" type="ComboBoxIntEx, RWGPatch" style="hidden" />
+      <combobox name="HillsWeight" type="ComboBoxIntEx, RWGPatch" style="hidden" />
+      <combobox name="MountainsWeight" type="ComboBoxIntEx, RWGPatch" style="hidden" />
     </rect>
   </insertAfter>
 
-  <remove xpath="/windows/window[@name='worldGeneration']//label[@text='warning']" />
+  <remove xpath="//window[@name='worldGeneration']" />
+  <append xpath="/windows">
+    <window name="worldGeneration" anchor="Top" pos="0,-88" width="1800" height="670" controller="WorldGenerationWindow" cursor_area="true">
+      <rect name="tabs" controller="TabSelector" select_tab_contents_on_open="true" use_page_buttons="true">
+        <options_tabbuttonsbar />
 
-  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='WorldSize']" name="type">ComboBoxIntList, RWGPatch</setattribute>
-  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='WorldSize']" name="default_value">8192</setattribute>
-  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[contains(@type, 'GenerationSelections')]" name="type">ComboBoxEnumEx`1[WorldGenerationEngineFinal.WorldBuilder+GenerationSelections], RWGPatch</setattribute>
-  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='PreviewQuality']" name="type">ComboBoxEnumEx`1[XUiC_WorldGenerationWindowGroup+PreviewQuality], RWGPatch</setattribute>
-  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='BiomeLayout']" name="type">ComboBoxEnumEx`1[WorldGenerationEngineFinal.WorldBuilder+BiomeLayout], RWGPatch</setattribute>
-  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='BiomeLayout']" name="default_value">CenterForest</setattribute>
-  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@type='ComboBoxInt']" name="type">ComboBoxIntEx, RWGPatch</setattribute>
-  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='PlainsWeight']" name="default_value">4</setattribute>
-  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='HillsWeight']" name="default_value">4</setattribute>
-  <setattribute xpath="/windows/window[@name='worldGeneration']//combobox[@name='MountainsWeight']" name="default_value">2</setattribute>
+        <rect name="content" pos="-900,-90" width="1000">
+          <rect name="tabsContents" depth="2">
+            <rect controller="TabSelectorTab" tab_key="xuiBtnOptionsGeneral">
+              <rect name="settings">
+                <rect name="general" pos="0,0" height="140">
+                  <headerbox height="40" text_key="xuiRwgEditorGeneralSettings" font_size="30" backcolor="228,18,21,128" bordercolor="228,18,21,255" textcolor="[white]" />
 
-  <append xpath="/windows/window[@name='worldGeneration']//rect[@name='generationControls']/rect/grid/rect[10]">
-    <label text="Traders" depth="4" width="150" height="30" style="hover" tooltip_key="xuiTraders" text_key="xuiTraders" font_size="28" color="[white]" justify="right" pivot="topleft" />
-    <combobox name="Traders" depth="108" pos="155,0" width="200" height="32" localization_prefix="xuiWorldGeneration" type="ComboBoxEnumEx`1[[SpawnTraders, RWGPatch]], RWGPatch" default_value="Default" value_wrap="false" />
-  </append>
-  <append xpath="/windows/window[@name='worldGeneration']//rect[@name='generationControls']/rect/grid/rect[11]">
-    <sprite name="backgroundMain" depth="0" width="350" height="4" pos="6,-10" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="true" />
-  </append>
-  <append xpath="/windows/window[@name='worldGeneration']//rect[@name='generationControls']/rect/grid/rect[12]">
-    <label text="SpawnRange" depth="4" width="150" height="30" style="hover" tooltip_key="xuiSpawnRange" text_key="xuiSpawnRange" font_size="28" color="[white]" justify="right" pivot="topleft" />
-    <combobox name="SpawnRange" depth="108" pos="155,0" width="200" height="32" localization_prefix="xuiWorldGeneration" type="ComboBoxEnumEx`1[[PlayerSpawnRange, RWGPatch]], RWGPatch" default_value="Default" value_wrap="false" />
-  </append>
-  <append xpath="/windows/window[@name='worldGeneration']//rect[@name='generationControls']/rect/grid/rect[13]">
-    <label text="SpawnBiome" depth="4" width="150" height="30" style="hover" tooltip_key="xuiSpawnBiome" text_key="xuiSpawnBiome" font_size="28" color="[white]" justify="right" pivot="topleft" />
-    <combobox name="SpawnBiome" depth="108" pos="155,0" width="200" height="32" localization_prefix="xuiWorldGeneration" type="ComboBoxEnumEx`1[[PlayerSpawnBiome, RWGPatch]], RWGPatch" default_value="Default" value_wrap="false" />
-  </append>
+                  <rect name="content" pos="0,-39" height="${parentinnerheight-40}" depth="1" padding="8,8">
+                    <boxbg depth="-1" backcolor="16,16,16,255" bordersprite="menu_empty2px" bordercolor="64,64,64,255" />
+                    <grid pos="0,0" width="440" rows="20" cell_height="44" arrangement="vertical">
+                      <rect height="36">
+                        <rwg_label text_key="xuiWorldName" />
+                        <textfield name="seedInput" pos="155,0" width="${parentinnerwidth-155}" height="${parentinnerheight}" character_limit="20" bordercolor="64,64,64,255" active_text_color="{% countynamevalid ? color(255,255,255,255) : color(255,0,0,255) }" />
+                      </rect>
+                      <!-- <label text_key="xuiRWGWarning" height="56" font_size="26" color="[red]" /> -->
+                      <rwg_combo name="WorldSaveStorage" type="ComboBoxEnum`1[Platform.UserDataStorageType]" visible="{% isroamingoptional }" localization_prefix="xuiStorageTypeOptions" tooltip_key="xuiGeneratedWorldSaveStorageDesc" text_key="xuiGeneratedWorldSaveStorage" />
+                    </grid>
+                    <grid pos="460,0" width="480" rows="20" cell_height="44" arrangement="vertical">
+                      <rect height="36">
+                        <rwg_label text_key="xuiWorldSize" />
+                        <combobox name="WorldSize" pos="155,0" width="${parentinnerwidth-155}" height="${parentinnerheight}" type="ComboBoxIntList, RWGPatch" values="4096,5120,6144,7168,8192,9216,10240" default_value="8192" value_wrap="false" border_color="64,64,64,255" />
+                      </rect>
+                    </grid>
+                  </rect>
+                </rect>
 
-  <insertBefore xpath="/windows/window[@name='worldGeneration']//simplebutton[@name='generate']">
-    <simplebutton name="btnDefaults" pos="-100, 0" width="200" height="48" font_size="32" caption_key="xuiDefaults" upper_case="true" />
-  </insertBefore>
-  <setattribute xpath="/windows/window[@name='worldGeneration']//simplebutton[@name='generate']" name="pos">105, 0</setattribute>
+                <rect name="mapFeatures" pos="0,-150" height="520">
+                  <headerbox height="40" text_key="xuiRwgEditorMapFeatures" font_size="30" backcolor="228,18,21,128" bordercolor="228,18,21,255" textcolor="[white]" />
 
-  <setattribute xpath="/windows/window[@name='worldGeneration']//texture[@name='worldPreviewTex']" name="on_scroll">true</setattribute>
+                  <rect name="content" pos="0,-39" height="${parentinnerheight-40}" depth="1" padding="0">
+                    <boxbg depth="-1" backcolor="16,16,16,255" bordersprite="menu_empty2px" bordercolor="64,64,64,255" />
+
+                    <rect name="scrollarea" on_scroll="true" gamepad_selectable="false" snap="false" padding="8,8" controller="XUiC_RWG_Options, RWGPatch">
+                      <defaultscrollbar />
+                      <scrollview pos="2,0" clippingsoftness="0,0">
+                        <grid pos="0,0" width="440" rows="20" cell_height="44" arrangement="vertical">
+                          <rwg_combo name="BiomeLayout" type="RWG_BiomeLayout, RWGPatch" default_value="CenterForest" localization_prefix="xuiRWG" tooltip_key="xuiBiomeLayoutDesc" text_key="xuiBiomeLayout" />
+                          <rwg_biome name="PineForestWeight" text_key="xuiPineForest" color="0,64,0" default_value="13" />
+                          <rwg_biome name="BurntForestWeight" text_key="xuiBurntForest" color="186,0,255" default_value="18" />
+                          <rwg_biome name="DesertWeight" text_key="xuiDesert" color="255,228,119" default_value="22" />
+                          <rwg_biome name="SnowWeight" text_key="xuiSnow" color="255,255,255" default_value="23" />
+                          <rwg_biome name="WastelandWeight" text_key="xuiWasteland" color="255,168,0" default_value="24" />
+                          <rwg_separator />
+                          <rwg_combo name="SpawnBiome" type="RWG_PlayerSpawnBiome, RWGPatch" tooltip_key="xuiSpawnBiome" text_key="xuiSpawnBiome" />
+                          <rwg_combo name="SpawnRange" type="RWG_PlayerSpawnRange, RWGPatch" tooltip_key="xuiSpawnRange" text_key="xuiSpawnRange" />
+                        </grid>
+
+                        <grid pos="460,0" width="480" rows="20" cell_height="44" arrangement="vertical">
+                          <rwg_combo name="Towns" type="RWG_GenerationSelections, RWGPatch" tooltip_key="xuiGenTownsDesc" text_key="xuiGenTowns" />
+                          <rwg_combo name="Wilderness" type="RWG_GenerationSelections, RWGPatch" tooltip_key="xuiGenWildernessDesc" text_key="xuiGenWilderness" />
+                          <rwg_combo name="Traders" type="RWG_SpawnTraders, RWGPatch" tooltip_key="xuiTraders" text_key="xuiTraders" />
+                          <rwg_separator />
+                          <rwg_combo name="Rivers" type="RWG_GenerationSelections, RWGPatch" tooltip_key="xuiRiversDesc" text_key="xuiRivers" />
+                          <rwg_combo name="Craters" type="RWG_GenerationSelections, RWGPatch" tooltip_key="xuiCratersDesc" text_key="xuiCraters" />
+                          <rwg_combo name="Cracks" type="RWG_GenerationSelections, RWGPatch" tooltip_key="xuiCracksDesc" text_key="xuiCracks" />
+                          <rwg_combo name="Lakes" type="RWG_GenerationSelections, RWGPatch" tooltip_key="xuiLakesDesc" text_key="xuiLakes" />
+                          <rwg_combo name="Hills" type="RWG_GenerationSelections, RWGPatch" tooltip_key="xuiHillsWeightDesc" text_key="xuiHillsWeight" />
+                          <rwg_combo name="Mountains" type="RWG_GenerationSelections, RWGPatch" tooltip_key="xuiMountainsWeightDesc" text_key="xuiMountainsWeight" />
+                        </grid>
+
+                      </scrollview>
+                    </rect>
+                  </rect>
+                </rect>
+              </rect>
+            </rect>
+          </rect>
+        </rect>
+      </rect>
+
+      <rect name="previewArea" pos="120,-90" width="780">
+        <headerbox height="40" text_key="xuiRwgEditorPreview" font_size="30" backcolor="228,18,21,128" bordercolor="228,18,21,255" textcolor="[white]" />
+
+        <rect name="content" pos="0,-39" height="${parentinnerheight-40}" depth="1" controller="WorldGenerationPreview">
+          <boxbg depth="-1" backcolor="16,16,16,255" bordersprite="menu_empty2px" bordercolor="64,64,64,255" />
+          <sprite name="activeBorder" depth="2" type="sliced" fillcenter="false" sprite="menu_empty3px" color="{% iscontrolling ? color(255,0,0,255) : (ishovered ? color(255,255,255,255) : color(0,0,0,0) ) }" />
+
+          <rect name="callouts" pos="10,${-parentinnerheight+190}" width="${parentinnerwidth-40}" height="180">
+            <rect name="unselected" pos="0,${-parentinnerheight+30}" visible="{% !iscontrolling }">
+              <label width="100" font_size="22" style="outline" color="228,18,21,255" parse_actions="true" justify="right" text="[action:gui:GUI Left Click][action:gui:GUI Submit]" />
+              <label pos="110,0" font_size="22" style="outline" color="160,160,160,255" text_key="xuiRwgEditorPreviewEnter" />
+            </rect>
+            <rect name="selectedNames" visible="{% iscontrolling }">
+              <grid pos="110,0" width="400" cell_height="26" cols="1" arrangement="horizontal">
+                <label font_size="22" style="outline" color="160,160,160,255" text_key="xuiRwgEditorPreviewExit" />
+                <label font_size="22" style="outline" color="160,160,160,255" text_key="xuiRwgEditorPreviewMove" />
+                <label font_size="22" style="outline" color="160,160,160,255" text_key="xuiRwgEditorPreviewMoveUp" />
+                <label font_size="22" style="outline" color="160,160,160,255" text_key="xuiRwgEditorPreviewMoveDown" />
+                <label font_size="22" style="outline" color="160,160,160,255" text_key="xuiRwgEditorPreviewLook" />
+                <label font_size="22" style="outline" color="160,160,160,255" text_key="xuiRwgEditorPreviewSprint" />
+                <label font_size="22" style="outline" color="160,160,160,255" text_key="xuiRwgEditorPreviewResetCamera" />
+              </grid>
+            </rect>
+            <rect name="selectedKbdMouse" visible="{% iscontrolling and !is_controller_input }">
+              <grid width="100" cell_height="26" cols="1" arrangement="horizontal">
+                <label font_size="22" style="outline" color="228,18,21,255" parse_actions="true" justify="right" text="[action:local:Primary] " />
+                <label font_size="22" style="outline" color="228,18,21,255" parse_actions="true" justify="right" text="[[action:local:Forward][action:local:Back][action:local:Left][action:local:Right]] " />
+                <label font_size="22" style="outline" color="228,18,21,255" parse_actions="true" justify="right" text="[action:local:Jump:EmptyString:KeyboardWithBrackets] " />
+                <label font_size="22" style="outline" color="228,18,21,255" parse_actions="true" justify="right" text="[action:local:ToggleCrouch:EmptyString:KeyboardWithBrackets] " />
+                <label font_size="22" style="outline" color="228,18,21,255" parse_actions="true" justify="right" text="{% '[' + localization ('xuiRwgEditorPreviewMouse') + ']' }" />
+                <label font_size="22" style="outline" color="228,18,21,255" parse_actions="true" justify="right" text="[action:local:Run:EmptyString:KeyboardWithBrackets] " />
+                <label font_size="22" style="outline" color="228,18,21,255" parse_actions="true" justify="right" text="[action:permanent:Reload:EmptyString:KeyboardWithBrackets] " />
+              </grid>
+            </rect>
+            <rect name="selectedController" visible="{% iscontrolling and is_controller_input }">
+              <grid pos="70,0" width="30" cell_height="26" cols="1" arrangement="horizontal">
+                <gamepad_icon actionset="local" actionname="Primary" />
+                <gamepad_icon button="LeftStick" />
+                <gamepad_icon actionset="local" actionname="Jump" />
+                <gamepad_icon actionset="local" actionname="ToggleCrouch" />
+                <gamepad_icon button="RightStick" />
+                <gamepad_icon actionset="local" actionname="Run" />
+                <gamepad_icon actionset="local" actionname="Reload" />
+              </grid>
+            </rect>
+          </rect>
+
+          <rect pos="${parentinnerwidth-380},-15" height="36" depth="1" pivot="topleft">
+            <rwg_label text_key="xuiPreviewQuality" />
+            <combobox name="PreviewQuality" pos="155,0" width="220" height="${parentinnerheight}" type="RWG_PreviewQuality, RWGPatch" localization_prefix="xuiAdvancedGenerationQuality" value_wrap="false" default_value="Default" border_color="64,64,64,255" />
+          </rect>
+
+          <texture depth="0" name="worldPreviewTex" material="Materials/Transparent Colored" on_press="true" on_hover="true" snap="false" />
+        </rect>
+      </rect>
+
+      <rect name="progress" depth="20" visible="{% isgenerating }">
+        <fullscreencollider />
+
+        <panel depth="5">
+          <label name="statusmsg" depth="5" pos="0,-400" width="800" height="100" font_size="36" justify="center" pivot="center" text="{% statustext }" />
+          <label name="abortmessage" depth="5" pos="0,-500" width="800" height="40" font_size="32" justify="center" pivot="center" text="{% format(localization('msgConnectingToServerCancelTemplate'), '[E41215][action:gui:GUI Cancel][-]') }" parse_actions="true" visible="{% !iscancelling }" />
+        </panel>
+      </rect>
+
+      <rect pos="-900,-770" name="dm_bar" visible="{showbar}">
+        <dm_data_bar width="1800" />
+      </rect>
+
+      <rect name="buttons" pos="-800,0" width="1600" height="50" anchor_bottom="#cam,0,30" anchor_top="#cam,0,120" controller="XUiC_RWG_Buttons, RWGPatch">
+        <rect pos="5,-5" depth="-1">
+          <combobox name="PlainsWeight" type="ComboBoxIntEx, RWGPatch" style="hidden" />
+          <combobox name="HillsWeight" type="ComboBoxIntEx, RWGPatch" style="hidden" />
+          <combobox name="MountainsWeight" type="ComboBoxIntEx, RWGPatch" style="hidden" />
+        </rect>
+        <grid cell_width="250" pivot="topleft">
+          <labeledbutton name="btnBack" width="200" height="50" font_size="32" caption_key="xuiBack" upper_case="true" action="GUI Cancel" enabled="{% !isgenerating }" />
+          <labeledbutton name="btnDefaults" width="200" height="50" font_size="32" caption_key="xuiDefaults" upper_case="true" enabled="{% !isgenerating }" />
+          <labeledbutton name="generate" width="200" height="50" font_size="32" caption_key="xuiGenerateWorld" upper_case="true" enabled="{% countynamevalid }" />
+        </grid>
+        <grid pos="${parentinnerwidth},0" cell_width="250" pivot="topright">
+          <labeledbutton name="btnNewGame" width="200" height="50" font_size="32" caption_key="xuiNewGame" upper_case="true" enabled="{% canstartnewgame }" />
+          <labeledbutton name="btnDataManagement" width="200" height="50" font_size="32" caption_key="xuiDmManageSaves" upper_case="true" enabled="{% !isgenerating }" />
+        </grid>
+      </rect>
+    </window>
+  </append>
 </patch>

@@ -1,0 +1,13 @@
+<patch>
+  <setattribute xpath="//style[@name='header.name']/style_entry[@name='upper_case']" name="value">false</setattribute>
+
+  <append xpath="/styles">
+    <style name="hidden" type="combobox">
+      <style_entry name="depth" value="-100"/>
+      <style_entry name="width" value="0"/>
+      <style_entry name="height" value="0"/>
+      <style_entry name="enabled" value="false"/>
+      <style_entry name="visible" value="false"/>
+    </style>
+  </append>
+</patch>

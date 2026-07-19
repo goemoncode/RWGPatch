@@ -1,0 +1,33 @@
+<patch>
+  <remove xpath="/templates/rwg_label" />
+  <remove xpath="/templates/rwg_combo" />
+  <remove xpath="/templates/rwg_biome" />
+
+  <append xpath="/templates">
+    <rwg_separator height="4">
+      <sprite depth="0" width="${parentinnerwidth}" height="${height}" sprite="menu_empty3px" color="[darkestGrey]" type="sliced" fillcenter="true" />
+    </rwg_separator>
+
+    <rwg_label text="" text_key="" tooltip_key="">
+      <label text="${text}" pos="0,${-Round(parentinnerheight/2,0)-1}" width="150" font_size="28" justify="right" pivot="left" text_key="${text_key}" tooltip_key="${tooltip_key}" />
+    </rwg_label>
+
+    <rwg_combo height="36" name="" text="" tooltip_key="" text_key="" visible="true" localization_prefix="xuiWorldGeneration" value_min="@DEF" value_max="@DEF" value="@DEF" default_value="Default" sdf_key="cb">
+      <rect height="${height}" visible="${visible}">
+        <label text="${text}" pos="0,${-Round(parentinnerheight/2,0)-1}" width="150" font_size="28" justify="right" pivot="left" text_key="${text_key}" tooltip_key="${tooltip_key}" />
+        <combobox name="${name}" pos="155,0" width="${parentinnerwidth-155}" height="${parentinnerheight}" value_wrap="false" border_color="64,64,64,255" type="${type}" localization_prefix="${localization_prefix}" value_min="${value_min}" value_max="${value_max}" value="${value}" default_value="${default_value}" sdf_key="${sdf_key}" />
+      </rect>
+    </rwg_combo>
+
+    <rwg_biome name="" height="36" default_value="">
+      <rect height="${height}">
+        <sprite name="color" depth="4" pos="0,${-Round(parentinnerheight/2,0)}" width="30" height="30" sprite="menu_empty3px" type="sliced" globalopacitymod="0" pivot="left" color="${color}" />
+        <label text_key="${text_key}" pos="0,${-Round(parentinnerheight/2,0)-1}" width="150" font_size="28" justify="right" pivot="left" />
+        <combobox name="${name}" pos="155,0" width="${parentinnerwidth-155}" height="${parentinnerheight}" type="ComboBoxIntEx, RWGPatch" value_min="0" value_max="50" value="0" value_increment="1" default_value="${default_value}" value_wrap="false" scroll_by_increment="true" />
+        <rect controller="XUiC_WorldGenerationWindow+XUiC_RwgBiome">
+          <combobox type="ComboBoxInt" style="hidden" />
+        </rect>
+      </rect>
+    </rwg_biome>
+  </append>
+</patch>
